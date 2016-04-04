@@ -5,13 +5,15 @@ class PostsController < ApplicationController
   end
 
   def new
+    #authenicate!
     @post = Post.new
     render :new
   end
 
   def create
     @post = current_user.posts.new(title: params["title"],
-                                   content: params["link"])
+                                   link: params["content"])
+    if @post.save
       redirect_to post_path(@post)
     else
       render :new
@@ -26,8 +28,8 @@ class PostsController < ApplicationController
   def update
     post = Post.find(params["id"])
     post.update(title: params["title"],
-                content: params["link"])
-    redirect_to root_path
+                link: params["content"])
+    redirect_to :root
   end
 
   def destroy

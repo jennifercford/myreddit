@@ -10,7 +10,6 @@
     <h3>Add a Comment</h3>
     <%= form_tag(post_comments_path(@post.id)) do %>
       <div class="comment-field">
-          <%= label_tag("Comment") %>
           <%= text_area_tag("body", nil, cols: 40, rows: 8) %>
       </div>
 
@@ -18,7 +17,7 @@
     <% end %>
 </div>
 
-<h3>Insightful Comments</h3>
+<h3>Comments</h3>
 <div class="comments">
   <% @post.comments.each do |comment| %>
       <div class="post-comment">
