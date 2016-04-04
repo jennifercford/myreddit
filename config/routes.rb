@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   # root 'welcome#index'
   root to: "posts#index"
   get "signups/new", to: "registrations#new", as: "new_signup"
-  post "signups", to: "registration#create", as: "signups"
+  post "signups", to: "registrations#create", as: "signups"
 
   get "login", to: "logins#new", as: "login"
   post "login", to: "logins#create"
@@ -14,7 +14,6 @@ Rails.application.routes.draw do
 
   get "posts/new", to: "posts#new", as: "posts_new"
   post "posts", to: "posts#create"
-
   get "posts/:id/edit", to: "posts#edit", as: "edit_post"
   put "posts/:id", to: "posts#update", as: "post"
   get "posts/:id", to: "posts#show"
