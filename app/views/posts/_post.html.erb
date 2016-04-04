@@ -1,6 +1,15 @@
-<h2 class="post-title"><%= link_to_unless_current(post.title, post_path(post)) %></h2>
+<h2 class="post-title"><%= post.title %></h2>
 <div class="post-body">
      <a target="_blank" href="<%= post.link %>">Click Me</a>
  </div>
  <h4 class="post-date">Written <%= time_ago_in_words(post.created_at) %> ago
  by <%= post.user.first_name%></h4>
+ <h5 class="comment-title">
+   <%=link_to_unless_current("Add a Comment",post_path(post))%></h5>
+   <div class="comments">
+     <% post.comments.each do |comment| %>
+         <div class="post-comment">
+             <%= simple_format(comment.body) %>
+         </div>
+     <% end %>
+   </div>
