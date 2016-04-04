@@ -1,10 +1,11 @@
-<%= render partial: "post", locals: { post: @post } %>
 
 <nav>
     <br/>
     <%= link_to("Homepage", :root) %>
     <br/>
 </nav>
+
+<%= render partial: "post", locals: { post: @post } %>
 
 <div class="comments-form">
     <h3>Add a Comment</h3>
