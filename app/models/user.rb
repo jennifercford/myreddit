@@ -5,4 +5,5 @@ class User < ActiveRecord::Base
               with: /.+@.+\..+/,  message: "Must have an @ symbol and a period."
             }
   has_many :posts
+  has_many :comments
 end
