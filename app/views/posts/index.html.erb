@@ -13,13 +13,13 @@
         <%= link_to("Delete Post", post_path(post), method: :delete) %>
         <% end %>
       </li>
-      <h2 class="comment-title">
-        <%=link_to_unless_current("Add a Comment",post_path(post))%></h2>
+      <ul class="comment-title">
+        <%=link_to_unless_current("Add a Comment",post_path(post))%></ul>
         <div class="comments">
           <% post.comments.each do |comment| %>
-              <div class="post-comment">
+              <li class="post-comment">
                   <%= simple_format(comment.body) %>
-              </div>
+              </li>
           <% end %>
         </div>
   <% end %>
