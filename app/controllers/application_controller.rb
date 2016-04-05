@@ -10,4 +10,11 @@ class ApplicationController < ActionController::Base
       User.find_by(id: user_id)
     end
   end
+
+  def authenticate!
+    unless current_user
+      flash[:notice] = "You must be logged in in order to do this."
+      redirect_to :root
+    end
+  end
 end

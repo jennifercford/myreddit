@@ -5,12 +5,13 @@ class PostsController < ApplicationController
   end
 
   def new
-    #authenicate!
+    authenicate!
     @post = Post.new
     render :new
   end
 
   def create
+    authenticate!
     @post = current_user.posts.new(title: params["title"],
                                    link: params["content"])
     if @post.save
@@ -21,11 +22,13 @@ class PostsController < ApplicationController
   end
 
   def edit
+    authenticate!
     post = Post.find(params["id"])
     render :edit, locals: { post: post }
   end
 
   def update
+    authenticate!
     post = Post.find(params["id"])
     post.update(title: params["title"],
                 link: params["content"])
@@ -33,6 +36,7 @@ class PostsController < ApplicationController
   end
 
   def destroy
+    authenticate!
     post = Post.find(params["id"])
     if current_user.id == post.user_id
       post.destroy
