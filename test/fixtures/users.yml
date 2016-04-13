@@ -16,4 +16,4 @@ user:
   first_name: first
   last_name: last
   email: user@email.com
-  password_digest: password
+  password_digest: <%= BCrypt::Password.create("password")%>
