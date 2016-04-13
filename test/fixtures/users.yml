@@ -4,10 +4,16 @@ one:
   first_name: MyString
   last_name: MyString
   email: MyString
-  password: MyString
+  password_digest: MyString
 
 two:
   first_name: MyString
   last_name: MyString
   email: MyString
-  password: MyString
+  password_digest: MyString
+
+user:
+  first_name: first
+  last_name: last
+  email: user@email.com
+  password_digest: password
