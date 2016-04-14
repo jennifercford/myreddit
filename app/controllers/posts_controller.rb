@@ -41,7 +41,7 @@ class PostsController < ApplicationController
     else
       flash[:notice] = "You don't have permission for this."
     end
-    binding.pry
+
     redirect_to :root
   end
 
