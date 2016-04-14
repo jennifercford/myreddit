@@ -1,10 +1,14 @@
 class LoginsController < ApplicationController
+
   def new
     render :new
   end
 
   def create
-    @user = User.find_by(email: params["email"])
+    @user = User.find(email: params["email"])
+    # @user will be nil
+    # if @user.authenticate nil does not have a authenticate method
+    # throws ActiveRecord::RecordNotFound
     if @user.authenticate(params["password"])
       session[:user_id] = @user.id
       flash[:notice] = "You are now logged in."

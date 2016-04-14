@@ -6,4 +6,5 @@ env:
 script:
   - RAILS_ENV=test bundle exec rake test
 before script:
+  - psql -U postgres -c 'create database myreddit-test'
   - RAILS_ENV=test bundle exec rake db:test:prepare

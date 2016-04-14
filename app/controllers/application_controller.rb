@@ -17,4 +17,11 @@ class ApplicationController < ActionController::Base
       redirect_to :root
     end
   end
+
+  rescue_from ActiveRecord::RecordNotFound do |e|
+    flash[:notice] = "Couldn't find the requested object in the databse.
+                           Is your input correct?"
+    redirect_to :root
+  end
+
 end
