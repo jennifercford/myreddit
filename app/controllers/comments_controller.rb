@@ -9,7 +9,11 @@ class CommentsController < ApplicationController
 
   def destroy
     @post = Post.find(params["id"])
-    @post.comments.destroy(params["comment_id"])
+#    binding.pry
+    @comment = Comment.find(params["comment_id"])
+    @comment.destroy
+#    @post.comments.find(params["comment_id"]).destroy
+#    @post.comments.find_by(id: params["comment_id"]).destroy
     redirect_to :root
   end
 end

@@ -24,18 +24,18 @@ class PostsControllerTest < ActionController::TestCase
         link: posts(:google).link}
       end
     end
-    # test "can delete a post" do
-    #   sign_in(:user)
-    #   post :create, {
-    #     id: posts(:google).id,
-    #     user_id: users(:user).id,
-    #     title: posts(:google).title,
-    #     link: posts(:google).link}
-    #   assert_difference("Post.count") do
-    #     delete :destroy, {
-    #       id: posts(:google).id,
-    #       user_id: users(:user).id
-    #     }
-    #   end
-    #end
+    test "can delete a post" do
+      sign_in(:user)
+      post :create, {
+        id: posts(:google).id,
+        user_id: users(:user).id,
+        title: posts(:google).title,
+        link: posts(:google).link}
+      assert_difference("Post.count", -1) do
+        delete :destroy, {
+          id: posts(:google).id,
+          user_id: users(:user).id
+        }
+      end
+    end
   end
