@@ -1,4 +1,6 @@
 class PostsController < ApplicationController
+  before_action :authenticate!, except: [:show, :index]
+
   def index
     @posts = Post.all
     render :index
@@ -39,6 +41,7 @@ class PostsController < ApplicationController
     else
       flash[:notice] = "You don't have permission for this."
     end
+    binding.pry
     redirect_to :root
   end
 

@@ -11,9 +11,27 @@ class CommentsControllerTest < ActionController::TestCase
     sign_in(:user)
     assert_difference("Comment.count") do
       post :create, {
+        id: comments(:test).id,
+        post_id: posts(:google).id,
+        user_id: users(:user).id,
         body: "test comment"
       }
     end
-    assert_redirected_to post_path(@post)
   end
+  # test "logged in users can delete a comment" do
+  #   sign_in(:user)
+  #   post :create, {
+  #     post_id: posts(:google).id,
+  #     user_id: users(:user).id,
+  #     body: comments(:test).body,
+  #     }
+  #   assert_difference("Comment.count") do
+  #     delete :destroy, {
+  #       post_id: posts(:google).id,
+  #       user_id: users(:user).id,
+  #       body: comments(:test).body
+  #     }
+  #    end
+  #end
+
 end
