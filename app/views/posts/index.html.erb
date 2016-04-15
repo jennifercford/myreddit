@@ -8,7 +8,7 @@
   <% @posts.each do |post| %>
       <li class="post">
         <%= render partial: "post", locals: { post: post } %>
-        <% if current_user%>
+        <% if current_user && current_user.id == post.user.id%>
         <%= link_to("Edit Post", edit_post_path(post)) %>
         <%= link_to("Delete Post", post_path(post), method: :delete) %>
         <% end %>
